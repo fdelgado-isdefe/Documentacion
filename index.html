@@ -6,27 +6,79 @@
   <title>Documentación</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
+    /* Colores base */
+    :root {
+      --color-primario: #007acc;
+      --color-secundario: #f3faff;
+      --color-fondo: #ffffff;
+      --color-borde: #dddddd;
+      --color-texto: #333333;
     }
-    select {
-      padding: 0.5rem;
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--color-secundario);
+      color: var(--color-texto);
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: var(--color-primario);
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
+
+    label {
+      font-weight: bold;
+    }
+
+    select {
+      padding: 0.5rem;
+      border: 1px solid var(--color-borde);
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: var(--color-fondo);
+      margin-bottom: 1.5rem;
+      width: 100%;
+      max-width: 400px;
+    }
+
     #markdown-content {
-      border: 1px solid #ddd;
-      padding: 1rem;
-      border-radius: 5px;
-      background-color: #f9f9f9;
+      border: 1px solid var(--color-borde);
+      padding: 1.5rem;
+      border-radius: 8px;
+      background-color: var(--color-fondo);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      line-height: 1.6;
+    }
+
+    #markdown-content h2 {
+      color: var(--color-primario);
+      border-bottom: 1px solid var(--color-borde);
+      padding-bottom: 0.25rem;
+    }
+
+    #markdown-content pre {
+      background-color: #f4f4f4;
+      padding: 0.5rem;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+
+    #markdown-content code {
+      font-family: monospace;
+      background-color: #f0f0f0;
+      padding: 2px 4px;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
-  <h1>Visor de Markdown</h1>
-  <label for="markdown-selector">Selecciona un archivo:</label>
+  <h1>📘 Documentación Técnica</h1>
+  <label for="markdown-selector">Selecciona un documento:</label>
   <select id="markdown-selector">
-    <option value="archivos/streamlit-on-azappsvc.md">streamlit-on-azappsvc.md</Despliegue de una aplicación Streamlit en Azure App Service usando Azure Pipelines>
+    <option value="archivos/streamlit-on-azappsvc.md">Despliegue Streamlit en Azure</option>
   </select>
 
   <div id="markdown-content">Aquí aparecerá el contenido...</div>
