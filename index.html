@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visor de Markdown</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    select {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    #markdown-content {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Visor de Markdown</h1>
+  <label for="markdown-selector">Selecciona un archivo:</label>
+  <select id="markdown-selector">
+    <option value="markdowns/archivo1.md">streamlit-on-azappsvc.md</Despliegue de una aplicación Streamlit en Azure App Service usando Azure Pipelines>
+  </select>
+
+  <div id="markdown-content">Aquí aparecerá el contenido...</div>
+
+  <script>
+    const selector = document.getElementById("markdown-selector");
+    const contentDiv = document.getElementById("markdown-content");
+
+    async function loadMarkdown(file) {
+      const response = await fetch(file);
+      const text = await response.text();
+      contentDiv.innerHTML = marked.parse(text);
+    }
+
+    selector.addEventListener("change", () => {
+      loadMarkdown(selector.value);
+    });
+
+    // Cargar el primer archivo por defecto
+    loadMarkdown(selector.value);
+  </script>
+</body>
+</html>
