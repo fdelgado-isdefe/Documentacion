@@ -1,24 +1,26 @@
-# Despliegue de una aplicación Streamlit en Azure App Service usando Azure Pipelines
+# 🚀 Despliegue de una aplicación Streamlit en Azure App Service con Azure Pipelines
 
-## 1. Crear una instancia de Azure App Service
+## 1️⃣ Crear una instancia de Azure App Service
 
-Para desplegar una aplicación, primero es necesario crear la **Web App** donde estará alojada. Para ello, se necesitan:
+Para desplegar una aplicación Streamlit, primero debes crear la **Web App** en la que se alojará. Para ello, necesitas:
 
-- Un grupo de recursos
-- Un plan de App Service
+- 🗂️ Un grupo de recursos  
+- 📦 Un plan de App Service
 
-Accede al **portal de Azure**, abre el **Cloud Shell** y selecciona **Bash** (no necesitas configurar almacenamiento previamente).
+Accede al **[portal de Azure](https://portal.azure.com/)**, abre el **Cloud Shell** y selecciona **Bash** (no es necesario configurar almacenamiento).
 
-![Cloud Shell](https://github.com/user-attachments/assets/cd1fcb39-80ca-40c1-80f6-b4423a540570)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/cd1fcb39-80ca-40c1-80f6-b4423a540570" alt="Cloud Shell" style="max-width: 100%;" />
+</div>
 
-### Crear los recursos necesarios
+### 🛠️ Crear los recursos necesarios
 
 ```bash
 # Variables
-RESOURCE_GROUP="streamlit-on-azure"     # Nombre del grupo de recursos 
-LOCATION="westeurope"                   # Ubicación geográfica 
-APP_SVC_PLAN="streamlitplan"            # Nombre del App Service Plan
-WEB_APP_NAME="streamlitonazure"         # Nombre único global de la web app
+RESOURCE_GROUP="streamlit-on-azure"     # Nombre del grupo de recursos
+LOCATION="westeurope"                   # Ubicación geográfica
+APP_SVC_PLAN="streamlitplan"           # Nombre del App Service Plan
+WEB_APP_NAME="streamlitonazure"        # Nombre único global de la web app
 
 # Crear grupo de recursos
 az group create \
@@ -42,16 +44,16 @@ az webapp create \
 
 ---
 
-## 2. Configurar la Web App
+## 2️⃣ Configurar la Web App
 
-Para que la aplicación funcione correctamente, debes incluir un archivo de arranque llamado `startup.sh` en el mismo directorio que el archivo principal de tu app:
+Para ejecutar correctamente la app, crea un archivo `startup.sh` en el mismo directorio del archivo principal `.py` de tu aplicación:
 
 ```bash
-# Contenido del archivo startup.sh
+# Contenido de startup.sh
 python -m streamlit run <archivo_principal>.py --server.port 8000 --server.address 0.0.0.0
 ```
 
-### Establecer el archivo de inicio en la configuración
+### ⚙️ Definir el archivo de inicio
 
 ```bash
 az webapp config set \
@@ -60,9 +62,7 @@ az webapp config set \
   --startup-file startup.sh
 ```
 
-### Habilitar la instalación de dependencias
-
-Es necesario indicar que se deben instalar los paquetes definidos en `requirements.txt` durante el despliegue:
+### 📦 Instalar dependencias desde requirements.txt
 
 ```bash
 az webapp config appsettings set \
@@ -73,56 +73,64 @@ az webapp config appsettings set \
 
 ---
 
-## 3. Desplegar desde Azure DevOps
+## 3️⃣ Desplegar desde Azure DevOps
 
-Una vez configurada la Web App, puedes implementar el código directamente desde **Azure DevOps**. Para ello, asegúrate de tener el repositorio alojado en **Azure Repos**.
+Una vez creada la Web App, es momento de desplegar el código desde **Azure DevOps**, utilizando un repositorio en **Azure Repos**.
 
-![Azure Repos](https://github.com/user-attachments/assets/38727c28-363d-43c4-829a-81092eff26ce)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/38727c28-363d-43c4-829a-81092eff26ce" alt="Azure Repos" style="max-width: 100%;" />
+</div>
 
-### Activar los Pipelines
+### 🔓 Activar Pipelines en Azure DevOps
 
-Si los Pipelines no están habilitados, ve a:
+Si aún no están activados, ve a:
 
 **Project settings** → **Overview** → **Azure DevOps services**  
-y activa la opción *Pipelines*.
+y activa la opción **Pipelines**.
 
-![Activar Pipelines](https://github.com/user-attachments/assets/d730df9d-7b67-4175-8911-835f04b6ed5c)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/d730df9d-7b67-4175-8911-835f04b6ed5c" alt="Activar Pipelines" style="max-width: 100%;" />
+</div>
 
-### Crear el pipeline
+### 🧩 Crear un nuevo Pipeline
 
-1. Ve a la pestaña **Pipelines** y haz clic en **New Pipeline**.
-2. Selecciona **Azure Repos Git**.
+1. Ve a la pestaña **Pipelines** y haz clic en **New Pipeline**
+2. Selecciona **Azure Repos Git**
 
-![Seleccionar repositorio](https://github.com/user-attachments/assets/41cdceb8-4dfa-42b7-b39b-c05a30f41036)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/41cdceb8-4dfa-42b7-b39b-c05a30f41036" alt="Seleccionar repositorio" style="max-width: 100%;" />
+</div>
 
-3. Escoge el repositorio correspondiente.
-4. En la configuración del pipeline, selecciona **Python to Linux Web App on Azure**.
-5. Selecciona la suscripción de Azure y la Web App deseada.
+3. Elige tu repositorio y selecciona la opción  
+   **Python to Linux Web App on Azure**
+4. Selecciona tu suscripción y la Web App correspondiente
 
-![Seleccionar configuración](https://github.com/user-attachments/assets/9850e1ae-af9b-430b-9c18-8c7dc149e876)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/9850e1ae-af9b-430b-9c18-8c7dc149e876" alt="Configuración de despliegue" style="max-width: 100%;" />
+</div>
 
-Esto generará automáticamente un archivo YAML con toda la información necesaria para conectar el repositorio con la Web App.
+📝 Esto generará un archivo YAML que contiene la configuración del pipeline. Haz clic en **Save and run**.
 
-Haz clic en **Save and run**. Se te preguntará si deseas hacer commit directamente en la rama principal o crear una nueva. Se recomienda usar la rama principal para asegurar que la Web App siempre tenga la última versión estable.
-
-Presiona nuevamente **Save and run** para iniciar el despliegue.
-
----
-
-## 4. Permisos y finalización
-
-Durante la primera ejecución del pipeline, es posible que se detenga en la fase de *Build stage* debido a que el despliegue requiere permisos adicionales.
-
-![Permisos](https://github.com/user-attachments/assets/928c866b-653d-4a24-b060-c2681b362972)
-
-Haz clic en **Permission needed** y luego en **Permit** para autorizar el proceso. El despliegue se reanudará automáticamente y puede tardar unos minutos.
+Azure DevOps te pedirá hacer un commit directamente en `main` o crear una rama. Es recomendable usar la rama principal (`main`) para mantener la última versión en producción.
 
 ---
 
-## 5. Resultado final
+## 4️⃣ Otorgar permisos para el despliegue
 
-Una vez completado el despliegue, podrás acceder a tu aplicación directamente desde el **portal de Azure**.
+La primera vez que ejecutes el pipeline, es probable que se detenga en la fase de *Build stage* solicitando permisos.
 
-<img width="1113" height="720" alt="image" src="https://github.com/user-attachments/assets/6230491c-3140-461e-b644-791cf02baf86" />
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/928c866b-653d-4a24-b060-c2681b362972" alt="Permisos requeridos" style="max-width: 100%;" />
+</div>
+
+🔐 Pulsa en **Permission needed** → **Permit** para continuar con el despliegue. El proceso continuará automáticamente.
 
 ---
+
+## 5️⃣ Ver la aplicación desplegada
+
+Una vez finalizado el proceso, podrás acceder a la aplicación desde el **portal de Azure** mediante la URL pública de tu Web App.
+
+---
+
+🎉 ¡Tu aplicación Streamlit está ahora funcionando en la nube con integración continua desde Azure DevOps!
