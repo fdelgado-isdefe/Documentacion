@@ -79,20 +79,25 @@ body {
 }
 
 .content pre {
-  background-color: #272822;
-  color: #f8f8f2;
-  padding: 12px;
-  border-radius: 6px;
+  background-color: #1e1e1e; /* fondo oscuro más neutro */
+  color: #d4d4d4; /* texto claro */
+  padding: 15px;
+  border-radius: 8px;
   overflow-x: auto;
+  font-family: 'Fira Code', monospace, monospace;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .content code {
-  background-color: #eee;
-  padding: 2px 5px;
-  border-radius: 3px;
-  font-family: monospace;
+  background-color: #f3f3f3; /* fondo claro para fragmentos inline */
+  color: #c7254e; /* color rojo oscuro */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace, monospace;
+  font-size: 0.9rem;
 }
-
 /* Scrollbar personalizado */
 
 .sidebar::-webkit-scrollbar,
