@@ -89,6 +89,7 @@ body {
   line-height: 1.4;
   box-shadow: none; /* sin sombra */
   border: none; /* sin borde */
+  position: relative; /* para el botón */
 }
 
 .content code {
@@ -100,6 +101,33 @@ body {
   font-size: 0.9rem;
   box-shadow: none; /* sin sombra */
   border: none; /* sin borde */
+}
+
+/* Wrapper del bloque de código para posicionar el botón */
+.code-block {
+  position: relative;
+  margin-bottom: 1.5em;
+}
+
+/* Botón "Copiar" */
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #34495e;
+  color: #ecf0f1;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
+  z-index: 10;
+}
+
+.copy-btn:hover {
+  background-color: #2c3e50;
 }
 
 /* Scrollbar personalizado */
