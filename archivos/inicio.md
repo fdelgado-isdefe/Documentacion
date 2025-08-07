@@ -25,7 +25,7 @@ Este espacio recopila documentos y guías técnicas organizadas por temas, con e
 
 ## 🤝 ¿Quieres colaborar?
 
-Si quieres añadir nuevo contenido, sugerir mejoras o reportar errores, puedes hacerlo abriendo un *issue* en nuestro repositorio de GitHub.  
+Si quieres añadir nuevo contenido, sugerir mejoras o reportar errores, puedes hacerlo mandando un correo a [fdelgado@isdefe.es](mailto:fdelgado@isdefe.es) o, si tienes cuenta de GitHub, abriendo un *issue* en nuestro repositorio de GitHub. 
 No te preocupes si nunca has usado GitHub, sigue estos pasos sencillos:
 
 ### Paso 1: Accede a la página de *Issues*
