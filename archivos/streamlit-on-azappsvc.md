@@ -131,6 +131,9 @@ La primera vez que ejecutes el pipeline, es probable que se detenga en la fase d
 
 Una vez finalizado el proceso, podrás acceder a la aplicación desde el **portal de Azure** mediante la URL pública de tu Web App.
 
+<div align="center">
+<img width="1113" height="720" alt="image" src="https://github.com/user-attachments/assets/6230491c-3140-461e-b644-791cf02baf86" alt="Streamlit running" style= "max-width: 100%;"/>
+</div>
 ---
 
 🎉 ¡Tu aplicación Streamlit está ahora funcionando en la nube con integración continua desde Azure DevOps!
