@@ -13,11 +13,48 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then((text) => {
         content.innerHTML = marked.parse(text);
+        addCopyButtons();     // Añadir botones "Copiar" a bloques <pre>
         setActiveLink(file);
       })
       .catch(() => {
         content.innerHTML = "<p><em>Error al cargar el contenido.</em></p>";
       });
+  }
+
+  // Añade botones "Copiar" a cada bloque <pre> renderizado
+  function addCopyButtons() {
+    document.querySelectorAll('#markdown-content pre').forEach(pre => {
+      // Evitar añadir botón varias veces
+      if (pre.parentElement.classList.contains('code-block')) return;
+
+      // Crear wrapper para el bloque de código y botón
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-block';
+
+      // Insertar wrapper antes del <pre> y mover <pre> dentro
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      // Crear botón copiar
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'Copiar';
+      btn.setAttribute('aria-label', 'Copiar código');
+      wrapper.insertBefore(btn, pre);
+
+      // Evento para copiar texto al portapapeles
+      btn.addEventListener('click', () => {
+        const code = pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = '¡Copiado!';
+          setTimeout(() => {
+            btn.textContent = 'Copiar';
+          }, 2000);
+        }).catch(() => {
+          btn.textContent = 'Error';
+        });
+      });
+    });
   }
 
   // Resalta el enlace activo en el menú
