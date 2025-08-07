@@ -6,71 +6,92 @@
   <title>Documentación</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    /* Colores base */
+    /* Paleta sobria */
     :root {
-      --color-primario: #007acc;
-      --color-secundario: #f3faff;
+      --color-primario: #1a4d80;
+      --color-secundario: #f5f7fa;
       --color-fondo: #ffffff;
-      --color-borde: #dddddd;
-      --color-texto: #333333;
+      --color-borde: #d1d5db;
+      --color-texto: #2e2e2e;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Roboto', 'Segoe UI', sans-serif;
       background-color: var(--color-secundario);
       color: var(--color-texto);
       margin: 0;
       padding: 2rem;
+      line-height: 1.6;
     }
 
     h1 {
       color: var(--color-primario);
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
     }
 
     label {
-      font-weight: bold;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: block;
     }
 
     select {
-      padding: 0.5rem;
+      padding: 0.6rem;
       border: 1px solid var(--color-borde);
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 1rem;
       background-color: var(--color-fondo);
-      margin-bottom: 1.5rem;
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
+      margin-bottom: 2rem;
     }
 
     #markdown-content {
-      border: 1px solid var(--color-borde);
-      padding: 1.5rem;
-      border-radius: 8px;
       background-color: var(--color-fondo);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      line-height: 1.6;
+      border: 1px solid var(--color-borde);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     }
 
-    #markdown-content h2 {
+    #markdown-content h2, 
+    #markdown-content h3 {
       color: var(--color-primario);
-      border-bottom: 1px solid var(--color-borde);
+      border-bottom: 1px solid #e0e0e0;
       padding-bottom: 0.25rem;
+      margin-top: 2rem;
     }
 
     #markdown-content pre {
-      background-color: #f4f4f4;
-      padding: 0.5rem;
+      background-color: #f0f2f5;
+      padding: 1rem;
       overflow-x: auto;
       border-radius: 4px;
+      font-size: 0.9rem;
     }
 
     #markdown-content code {
-      font-family: monospace;
-      background-color: #f0f0f0;
-      padding: 2px 4px;
+      background-color: #eef1f5;
+      padding: 2px 6px;
       border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+
+    #markdown-content ul {
+      padding-left: 1.2rem;
+    }
+
+    #markdown-content blockquote {
+      border-left: 4px solid var(--color-primario);
+      background-color: #f0f4f8;
+      padding: 0.5rem 1rem;
+      margin: 1rem 0;
+      color: #444;
     }
   </style>
 </head>
@@ -79,18 +100,24 @@
   <label for="markdown-selector">Selecciona un documento:</label>
   <select id="markdown-selector">
     <option value="archivos/streamlit-on-azappsvc.md">Despliegue Streamlit en Azure</option>
+    <!-- Puedes añadir más opciones aquí -->
   </select>
 
-  <div id="markdown-content">Aquí aparecerá el contenido...</div>
+  <div id="markdown-content">Cargando documentación...</div>
 
   <script>
     const selector = document.getElementById("markdown-selector");
     const contentDiv = document.getElementById("markdown-content");
 
     async function loadMarkdown(file) {
-      const response = await fetch(file);
-      const text = await response.text();
-      contentDiv.innerHTML = marked.parse(text);
+      try {
+        const response = await fetch(file);
+        if (!response.ok) throw new Error("No se pudo cargar el archivo.");
+        const text = await response.text();
+        contentDiv.innerHTML = marked.parse(text);
+      } catch (error) {
+        contentDiv.innerHTML = `<p style="color: red;">⚠️ Error al cargar el archivo Markdown.</p>`;
+      }
     }
 
     selector.addEventListener("change", () => {
