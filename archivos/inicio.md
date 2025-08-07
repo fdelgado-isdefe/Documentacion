@@ -56,8 +56,3 @@ No te preocupes por el formato, solo sé claro y específico.
 Cuando hayas terminado de escribir, pulsa el botón verde **Submit new issue** para enviar tu propuesta.  
 
 ¡Y ya está! Tu sugerencia llegará al equipo y la revisaremos para añadirla a la documentación.
-
----
-
-Si tienes dudas, puedes pedir ayuda a tu responsable o a cualquier compañero con experiencia en GitHub.  
-¡Gracias por contribuir!
