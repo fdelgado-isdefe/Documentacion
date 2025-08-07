@@ -20,10 +20,3 @@ Este espacio recopila documentos y guías técnicas organizadas por temas, con e
 
 - **Streamlit en Azure App Service**
 - **Crear y conectar una base de datos en Azure**
-
----
-
-## 📬 Contacto
-
-¿Tienes sugerencias, correcciones o quieres contribuir?  
-Puedes abrir un _issue_ o contactar directamente al equipo técnico.
