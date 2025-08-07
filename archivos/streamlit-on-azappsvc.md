@@ -19,8 +19,8 @@ Accede al **[portal de Azure](https://portal.azure.com/)**, abre el **Cloud Shel
 # Variables
 RESOURCE_GROUP="streamlit-on-azure"     # Nombre del grupo de recursos
 LOCATION="westeurope"                   # Ubicación geográfica
-APP_SVC_PLAN="streamlitplan"           # Nombre del App Service Plan
-WEB_APP_NAME="streamlitonazure"        # Nombre único global de la web app
+APP_SVC_PLAN="streamlitplan"            # Nombre del App Service Plan
+WEB_APP_NAME="streamlitonazure"         # Nombre único global de la web app
 
 # Crear grupo de recursos
 az group create \
