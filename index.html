@@ -6,124 +6,150 @@
   <title>Documentación Técnica</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    /* Paleta elegante y profesional */
     :root {
-      --clr-primario: #2c3e50;       /* Azul grisáceo oscuro */
-      --clr-secundario: #ecf0f1;     /* Gris claro muy suave */
-      --clr-fondo: #ffffff;
-      --clr-texto: #2d3436;
-      --clr-borde: #bdc3c7;
+      --clr-bg: #f9f9f9;
+      --clr-card: #ffffff;
+      --clr-primary: #1a2930;
+      --clr-secondary: #0e76a8;
+      --clr-accent: #dbe9f4;
+      --clr-border: #d6d6d6;
+      --clr-code-bg: #f4f4f4;
+      --max-width: 850px;
     }
 
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
-      padding: 2rem 1.5rem;
-      background-color: var(--clr-secundario);
-      color: var(--clr-texto);
-      line-height: 1.7;
+      padding: 2rem 1rem;
+      font-family: Georgia, 'Times New Roman', serif;
+      background-color: var(--clr-bg);
+      color: var(--clr-primary);
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      background: var(--clr-card);
+      padding: 3rem 2rem;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      border: 1px solid var(--clr-border);
     }
 
     h1 {
-      color: var(--clr-primario);
-      font-size: 1.75rem;
-      font-weight: 600;
-      display: inline-flex;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--clr-secondary);
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
+      gap: 0.6rem;
     }
 
     label {
-      display: block;
+      font-weight: 600;
       margin-bottom: 0.5rem;
-      font-weight: 500;
+      display: block;
     }
 
     select {
       width: 100%;
-      max-width: 460px;
-      padding: 0.6rem 0.8rem;
+      max-width: 400px;
+      padding: 0.6rem;
       font-size: 1rem;
-      border: 1px solid var(--clr-borde);
-      border-radius: 5px;
-      background-color: var(--clr-fondo);
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      border: 1px solid var(--clr-border);
       margin-bottom: 2rem;
+      background-color: #fff;
     }
 
     #markdown-content {
-      background-color: var(--clr-fondo);
-      border: 1px solid var(--clr-borde);
-      border-radius: 6px;
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      line-height: 1.7;
     }
 
-    /* Estilos de encabezados dentro del markdown */
     #markdown-content h2, #markdown-content h3 {
-      color: var(--clr-primario);
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 0.25rem;
+      color: var(--clr-secondary);
       margin-top: 1.8rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.3rem;
     }
 
-    /* Códigos y bloques de código */
+    #markdown-content p {
+      margin-bottom: 1rem;
+    }
+
     #markdown-content pre {
-      background-color: #f0f0f0;
+      background-color: var(--clr-code-bg);
       padding: 1rem;
-      font-size: 0.95rem;
       border-radius: 4px;
       overflow-x: auto;
-    }
-    #markdown-content code {
-      background-color: #f7f7f7;
-      padding: 2px 5px;
-      border-radius: 4px;
-      font-family: Monaco, Consolas, monospace;
+      font-size: 0.9rem;
     }
 
-    /* Listas y citas con un diseño limpio */
-    #markdown-content ul, ol {
-      margin-left: 1.2rem;
-      margin-top: 0.6rem;
+    #markdown-content code {
+      background-color: #eef1f3;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: monospace;
     }
+
     #markdown-content blockquote {
-      margin: 1rem 0;
-      padding: 0.7rem 1rem;
-      border-left: 4px solid var(--clr-primario);
-      background-color: #f5f7fa;
-      color: #555;
+      background-color: var(--clr-accent);
+      border-left: 4px solid var(--clr-secondary);
+      padding: 0.8rem 1rem;
+      margin: 1.5rem 0;
+      color: #333;
+    }
+
+    #markdown-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <h1>📘 Documentación Técnica</h1>
-  <label for="markdown-selector">Selecciona un documento:</label>
-  <select id="markdown-selector">
-    <option value="archivos/streamlit-on-azappsvc.md">Despliegue Streamlit en Azure</option>
-    <!-- Puedes añadir más opciones aquí -->
-  </select>
+  <div class="container">
+    <h1>📘 Documentación Técnica</h1>
+    <label for="markdown-selector">Selecciona un documento:</label>
+    <select id="markdown-selector">
+      <option value="archivos/streamlit-on-azappsvc.md">Despliegue Streamlit en Azure</option>
+      <!-- Añade más opciones aquí -->
+    </select>
 
-  <div id="markdown-content">Cargando documentación...</div>
+    <div id="markdown-content">Cargando documento...</div>
+
+    <footer>
+      © 2025 Tu Nombre o Proyecto — Documentación generada con 💡
+    </footer>
+  </div>
 
   <script>
-    const selector = document.getElementById('markdown-selector');
-    const contentDiv = document.getElementById('markdown-content');
+    const selector = document.getElementById("markdown-selector");
+    const contentDiv = document.getElementById("markdown-content");
 
     async function loadMarkdown(file) {
       try {
         const response = await fetch(file);
-        if (!response.ok) throw new Error('No se pudo cargar el archivo.');
+        if (!response.ok) throw new Error("No se pudo cargar el archivo.");
         const text = await response.text();
         contentDiv.innerHTML = marked.parse(text);
       } catch (e) {
-        contentDiv.innerHTML = '<p style="color: red;">⚠️ Error al cargar el documento.</p>';
+        contentDiv.innerHTML = "<p style='color: red;'>⚠️ Error al cargar el documento.</p>";
       }
     }
 
-    selector.addEventListener('change', () => loadMarkdown(selector.value));
-    loadMarkdown(selector.value);
+    selector.addEventListener("change", () => {
+      loadMarkdown(selector.value);
+    });
+
+    loadMarkdown(selector.value); // Carga inicial
   </script>
 </body>
 </html>
