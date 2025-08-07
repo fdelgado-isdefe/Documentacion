@@ -8,18 +8,21 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <div class="layout">
+  <div class="container">
     <aside class="sidebar">
       <h2>📚 Temas</h2>
-      <nav>
-        <ul>
-          <li><a href="#" data-file="archivos/inicio.md">🏠 Inicio</a></li>
-          <li><a href="#" data-file="archivos/streamlit-on-azappsvc.md">Streamlit en Azure Web App</a></li>
-          <li><a href="#" data-file="archivos/mysql-on-azure.md">Crear y conectar una base de datos en Azure</a></li>
-          <!-- Añade más enlaces aquí -->
-        </ul>
-      </nav>
+      <ul id="menu">
+        <li><a href="#" data-file="archivos/inicio.md">🏠 Inicio</a></li>
+        <li><a href="#" data-file="archivos/streamlit-on-azappsvc.md">Streamlit en Azure Web App</a></li>
+        <li><a href="#" data-file="archivos/mysql-on-azure.md">Crear y conectar una base de datos en Azure</a></li>
+        <!-- Añade más enlaces aquí -->
+      </ul>
     </aside>
+
+    <main class="content">
+      <div id="markdown-content">Cargando contenido...</div>
+    </main>
+  </div>
 
   <footer class="footer">
     © 2025 Francisco Delgado López — Documentación técnica 
