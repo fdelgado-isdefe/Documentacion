@@ -20,3 +20,14 @@ Este espacio recopila documentos y guías técnicas organizadas por temas, con e
 
 - **Streamlit en Azure App Service**
 - **Crear y conectar una base de datos en Azure**
+
+---
+
+## 🤝 Cómo contribuir
+
+Para añadir nuevo contenido o sugerir mejoras, por favor abre un [issue](https://github.com/fdelgado-isdefe/Documentacion/issues) en el repositorio de GitHub:
+
+https://github.com/fdelgado-isdefe/Documentacion
+
+De esta forma podrás proponer temas, reportar errores o pedir nuevas guías que te interesen.  
+¡Tu colaboración es muy bienvenida para mantener esta documentación útil y actualizada!
