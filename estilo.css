@@ -78,6 +78,8 @@ body {
   font-size: 1rem;
 }
 
+/* Bloques de código con fondo oscuro y texto claro */
+
 .content pre {
   background-color: #2d2d2d; /* gris oscuro */
   color: #f8f8f2; /* blanco hueso */
@@ -103,6 +105,12 @@ body {
   border: none;
 }
 
+/* Wrapper del bloque de código para posicionar el botón */
+.code-block {
+  position: relative;
+  margin-bottom: 1.5em;
+}
+
 /* Botón "Copiar" */
 .copy-btn {
   position: absolute;
@@ -123,7 +131,6 @@ body {
 .copy-btn:hover {
   background-color: #505e8c;
 }
-
 
 /* Scrollbar personalizado */
 
