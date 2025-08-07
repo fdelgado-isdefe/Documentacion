@@ -3,95 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentación</title>
+  <title>Documentación Técnica</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    /* Paleta sobria */
+    /* Paleta elegante y profesional */
     :root {
-      --color-primario: #1a4d80;
-      --color-secundario: #f5f7fa;
-      --color-fondo: #ffffff;
-      --color-borde: #d1d5db;
-      --color-texto: #2e2e2e;
+      --clr-primario: #2c3e50;       /* Azul grisáceo oscuro */
+      --clr-secundario: #ecf0f1;     /* Gris claro muy suave */
+      --clr-fondo: #ffffff;
+      --clr-texto: #2d3436;
+      --clr-borde: #bdc3c7;
     }
 
     body {
-      font-family: 'Roboto', 'Segoe UI', sans-serif;
-      background-color: var(--color-secundario);
-      color: var(--color-texto);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
-      padding: 2rem;
-      line-height: 1.6;
+      padding: 2rem 1.5rem;
+      background-color: var(--clr-secundario);
+      color: var(--clr-texto);
+      line-height: 1.7;
     }
 
     h1 {
-      color: var(--color-primario);
-      font-size: 1.8rem;
+      color: var(--clr-primario);
+      font-size: 1.75rem;
       font-weight: 600;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 1.5rem;
     }
 
     label {
-      font-weight: 500;
-      margin-bottom: 0.5rem;
       display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
     }
 
     select {
-      padding: 0.6rem;
-      border: 1px solid var(--color-borde);
-      border-radius: 6px;
-      font-size: 1rem;
-      background-color: var(--color-fondo);
       width: 100%;
-      max-width: 450px;
+      max-width: 460px;
+      padding: 0.6rem 0.8rem;
+      font-size: 1rem;
+      border: 1px solid var(--clr-borde);
+      border-radius: 5px;
+      background-color: var(--clr-fondo);
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
     }
 
     #markdown-content {
-      background-color: var(--color-fondo);
-      border: 1px solid var(--color-borde);
-      border-radius: 8px;
+      background-color: var(--clr-fondo);
+      border: 1px solid var(--clr-borde);
+      border-radius: 6px;
       padding: 2rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    #markdown-content h2, 
-    #markdown-content h3 {
-      color: var(--color-primario);
+    /* Estilos de encabezados dentro del markdown */
+    #markdown-content h2, #markdown-content h3 {
+      color: var(--clr-primario);
       border-bottom: 1px solid #e0e0e0;
       padding-bottom: 0.25rem;
-      margin-top: 2rem;
+      margin-top: 1.8rem;
     }
 
+    /* Códigos y bloques de código */
     #markdown-content pre {
-      background-color: #f0f2f5;
+      background-color: #f0f0f0;
       padding: 1rem;
+      font-size: 0.95rem;
+      border-radius: 4px;
       overflow-x: auto;
-      border-radius: 4px;
-      font-size: 0.9rem;
     }
-
     #markdown-content code {
-      background-color: #eef1f5;
-      padding: 2px 6px;
+      background-color: #f7f7f7;
+      padding: 2px 5px;
       border-radius: 4px;
-      font-family: Consolas, monospace;
+      font-family: Monaco, Consolas, monospace;
     }
 
-    #markdown-content ul {
-      padding-left: 1.2rem;
+    /* Listas y citas con un diseño limpio */
+    #markdown-content ul, ol {
+      margin-left: 1.2rem;
+      margin-top: 0.6rem;
     }
-
     #markdown-content blockquote {
-      border-left: 4px solid var(--color-primario);
-      background-color: #f0f4f8;
-      padding: 0.5rem 1rem;
       margin: 1rem 0;
-      color: #444;
+      padding: 0.7rem 1rem;
+      border-left: 4px solid var(--clr-primario);
+      background-color: #f5f7fa;
+      color: #555;
     }
   </style>
 </head>
@@ -106,25 +108,21 @@
   <div id="markdown-content">Cargando documentación...</div>
 
   <script>
-    const selector = document.getElementById("markdown-selector");
-    const contentDiv = document.getElementById("markdown-content");
+    const selector = document.getElementById('markdown-selector');
+    const contentDiv = document.getElementById('markdown-content');
 
     async function loadMarkdown(file) {
       try {
         const response = await fetch(file);
-        if (!response.ok) throw new Error("No se pudo cargar el archivo.");
+        if (!response.ok) throw new Error('No se pudo cargar el archivo.');
         const text = await response.text();
         contentDiv.innerHTML = marked.parse(text);
-      } catch (error) {
-        contentDiv.innerHTML = `<p style="color: red;">⚠️ Error al cargar el archivo Markdown.</p>`;
+      } catch (e) {
+        contentDiv.innerHTML = '<p style="color: red;">⚠️ Error al cargar el documento.</p>';
       }
     }
 
-    selector.addEventListener("change", () => {
-      loadMarkdown(selector.value);
-    });
-
-    // Cargar el primer archivo por defecto
+    selector.addEventListener('change', () => loadMarkdown(selector.value));
     loadMarkdown(selector.value);
   </script>
 </body>
