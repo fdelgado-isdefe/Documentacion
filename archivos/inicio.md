@@ -23,11 +23,41 @@ Este espacio recopila documentos y guías técnicas organizadas por temas, con e
 
 ---
 
-## 🤝 Cómo contribuir
+## 🤝 ¿Quieres colaborar?
 
-Para añadir nuevo contenido o sugerir mejoras, por favor abre un [issue](https://github.com/fdelgado-isdefe/Documentacion/issues) en el repositorio de GitHub:
+Si quieres añadir nuevo contenido, sugerir mejoras o reportar errores, puedes hacerlo abriendo un *issue* en nuestro repositorio de GitHub.  
+No te preocupes si nunca has usado GitHub, sigue estos pasos sencillos:
 
-https://github.com/fdelgado-isdefe/Documentacion
+### Paso 1: Accede a la página de *Issues*
 
-De esta forma podrás proponer temas, reportar errores o pedir nuevas guías que te interesen.  
-¡Tu colaboración es muy bienvenida para mantener esta documentación útil y actualizada!
+Haz clic en este enlace para abrir directamente la página de *issues* del repositorio:  
+[https://github.com/fdelgado-isdefe/Documentacion/issues](https://github.com/fdelgado-isdefe/Documentacion/issues)
+
+---
+
+### Paso 2: Crear un nuevo *issue*
+
+1. En la página de *Issues*, haz clic en el botón verde que dice **New issue** (nuevo issue).
+2. Se abrirá un formulario donde podrás poner un título y una descripción para tu sugerencia o problema.
+
+---
+
+### Paso 3: Escribe tu propuesta
+
+- En el campo **Title** escribe un resumen corto de tu idea o problema.  
+- En el campo de texto grande, explica con detalle lo que quieres aportar o el problema que has encontrado.  
+
+No te preocupes por el formato, solo sé claro y específico.
+
+---
+
+### Paso 4: Envía tu *issue*
+
+Cuando hayas terminado de escribir, pulsa el botón verde **Submit new issue** para enviar tu propuesta.  
+
+¡Y ya está! Tu sugerencia llegará al equipo y la revisaremos para añadirla a la documentación.
+
+---
+
+Si tienes dudas, puedes pedir ayuda a tu responsable o a cualquier compañero con experiencia en GitHub.  
+¡Gracias por contribuir!
