@@ -1,14 +1,4 @@
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-/* 🎨 Variables para modo claro */
+/* Variables para modo claro */
 :root {
   --bg-body: #f9f9f9;
   --text-color: #333;
@@ -19,9 +9,11 @@ html, body {
   --bg-footer: #222;
   --text-footer: #fff;
   --scrollbar-thumb: #ccc;
+  --code-bg: #2d2d2d;
+  --code-text: #f8f8f2;
 }
 
-/* 🎨 Variables para modo oscuro */
+/* Variables para modo oscuro */
 body.dark {
   --bg-body: #1e1e1e;
   --text-color: #e0e0e0;
@@ -32,6 +24,8 @@ body.dark {
   --bg-footer: #000;
   --text-footer: #bbb;
   --scrollbar-thumb: #555;
+  --code-bg: #3b3b3b; /* un gris más claro que el fondo */
+  --code-text: #ffffff;
 }
 
 body {
@@ -131,8 +125,8 @@ body {
 
 /* Bloques de código */
 .content pre, .content code {
-  background-color: #2d2d2d;
-  color: #f8f8f2;
+  background-color: var(--code-bg);
+  color: var(--code-text);
   font-family: 'Fira Code', monospace;
 }
 
