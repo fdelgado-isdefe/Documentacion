@@ -8,26 +8,71 @@ html, body {
   height: 100%;
 }
 
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9f9f9;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* ocupar toda la pantalla */
+/* 🎨 Variables para modo claro */
+:root {
+  --bg-body: #f9f9f9;
+  --text-color: #333;
+  --bg-sidebar: #2c3e50;
+  --text-sidebar: #ecf0f1;
+  --sidebar-hover: #34495e;
+  --bg-content: #fff;
+  --bg-footer: #222;
+  --text-footer: #fff;
+  --scrollbar-thumb: #ccc;
 }
 
-/* Contenedor principal ocupa todo el espacio menos el footer */
+/* 🎨 Variables para modo oscuro */
+body.dark {
+  --bg-body: #1e1e1e;
+  --text-color: #e0e0e0;
+  --bg-sidebar: #111;
+  --text-sidebar: #f0f0f0;
+  --sidebar-hover: #222;
+  --bg-content: #2a2a2a;
+  --bg-footer: #000;
+  --text-footer: #bbb;
+  --scrollbar-thumb: #555;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-body);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Encabezado */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: var(--bg-sidebar);
+  color: var(--text-sidebar);
+}
+
+#theme-toggle {
+  background: transparent;
+  color: var(--text-sidebar);
+  border: 1px solid var(--text-sidebar);
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Contenedor principal */
 .container {
   flex: 1;
   display: flex;
-  min-height: 0; /* evita doble scroll en flexbox */
+  min-height: 0;
 }
 
 .sidebar {
   width: 240px;
-  background: #2c3e50;
-  color: #ecf0f1;
+  background: var(--bg-sidebar);
+  color: var(--text-sidebar);
   padding: 20px;
   overflow-y: auto;
 }
@@ -49,7 +94,7 @@ body {
 }
 
 .sidebar ul li a {
-  color: #ecf0f1;
+  color: var(--text-sidebar);
   text-decoration: none;
   font-size: 1em;
   display: block;
@@ -60,24 +105,23 @@ body {
 
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
-  background-color: #34495e;
-  cursor: pointer;
+  background-color: var(--sidebar-hover);
 }
 
 .content {
   flex-grow: 1;
   padding: 30px;
   overflow-y: auto;
-  background: #fff;
-  box-shadow: inset 0 0 10px #ddd;
-  min-height: 0; /* clave para evitar scroll extra */
+  background: var(--bg-content);
+  box-shadow: inset 0 0 10px #0002;
+  min-height: 0;
 }
 
-/* Markdown básico */
+/* Markdown */
 .content h1,
 .content h2,
 .content h3 {
-  color: #2c3e50;
+  color: var(--text-color);
 }
 
 .content p {
@@ -86,29 +130,27 @@ body {
 }
 
 /* Bloques de código */
-.content pre {
+.content pre, .content code {
   background-color: #2d2d2d;
   color: #f8f8f2;
+  font-family: 'Fira Code', monospace;
+}
+
+.content pre {
   padding: 15px;
   border-radius: 8px;
   overflow-x: auto;
-  font-family: 'Fira Code', monospace;
   font-size: 0.95rem;
   line-height: 1.4;
-  border: none;
 }
 
 .content code {
-  background-color: #2d2d2d;
-  color: #f8f8f2;
   padding: 2px 6px;
   border-radius: 4px;
-  font-family: 'Fira Code', monospace;
   font-size: 0.9rem;
-  border: none;
 }
 
-/* Botón "Copiar" */
+/* Botón copiar */
 .code-block {
   position: relative;
   margin-bottom: 1.5em;
@@ -134,34 +176,22 @@ body {
   background-color: #505e8c;
 }
 
-/* Scrollbar personalizado */
+/* Scrollbar */
 .sidebar::-webkit-scrollbar,
 .content::-webkit-scrollbar {
   width: 8px;
 }
 
-.sidebar::-webkit-scrollbar-track {
-  background: #2c3e50;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: #34495e;
-  border-radius: 10px;
-}
-
-.content::-webkit-scrollbar-track {
-  background: #fff;
-}
-
+.sidebar::-webkit-scrollbar-thumb,
 .content::-webkit-scrollbar-thumb {
-  background-color: #ccc;
+  background-color: var(--scrollbar-thumb);
   border-radius: 10px;
 }
 
 /* Footer */
 .footer {
-  background-color: #222;
-  color: #fff;
+  background-color: var(--bg-footer);
+  color: var(--text-footer);
   text-align: center;
   padding: 0.5rem;
 }
