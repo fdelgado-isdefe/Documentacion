@@ -9,6 +9,11 @@
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4706/4706354.png" type="image/png">
 </head>
 <body>
+  <header class="header">
+    <h1>📘 Documentación Técnica</h1>
+    <button id="theme-toggle">🌙 Modo oscuro</button>
+  </header>
+
   <div class="container">
     <aside class="sidebar">
       <h2>📚 Temas</h2>
@@ -16,7 +21,6 @@
         <li><a href="#" data-file="archivos/inicio.md">🏠 Inicio</a></li>
         <li><a href="#" data-file="archivos/streamlit-on-azappsvc.md">Streamlit en Azure Web App</a></li>
         <li><a href="#" data-file="archivos/mysql-on-azure.md">Crear y conectar una base de datos en Azure</a></li>
-        <!-- Añade más enlaces aquí -->
       </ul>
     </aside>
 
@@ -30,5 +34,42 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Función para aplicar un tema
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark');
+        themeToggle.textContent = '☀️ Modo claro';
+      } else {
+        body.classList.remove('dark');
+        themeToggle.textContent = '🌙 Modo oscuro';
+      }
+    }
+
+    // Al cargar, detectar preferencia guardada o la del sistema
+    let savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+      // Detectar modo oscuro del sistema
+      savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyTheme(savedTheme);
+
+    // Evento para cambiar el tema
+    themeToggle.addEventListener('click', () => {
+      const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+      localStorage.setItem('theme', newTheme);
+      applyTheme(newTheme);
+    });
+
+    // Escuchar cambios en la preferencia del sistema
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) { // Solo si el usuario no ha elegido manualmente
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
 </body>
 </html>
